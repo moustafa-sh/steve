@@ -10,8 +10,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Save the data to like.txt
     file_put_contents('like.txt', $data, FILE_APPEND | LOCK_EX);
 
-    // Redirect back to the form or show a success message
-    echo "Data saved successfully!";
+    header("Location: index.html");
+    exit();
 } else {
     // If not a POST request, redirect to the form
     header("Location: index.html");
