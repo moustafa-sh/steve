@@ -1,0 +1,8 @@
+{
+    "require": {
+        "php": "^8.1", // Specify your desired PHP version
+        "guzzlehttp/guzzle": "^7.5", // For making HTTP requests to GitHub API
+        "league/oauth2-client": "^3.4", // For OAuth2 authentication with GitHub
+        "league/flysystem-adapter-local": "^2.0" // For working with local files
+    }
+}
