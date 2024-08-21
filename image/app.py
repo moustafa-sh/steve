@@ -1,25 +1,33 @@
-from flask import Flask, request, render_template
-import os
+import flask
+from flask import Flask, request, render_template, redirect, url_for
 
 app = Flask(__name__)
 
 @app.route('/')
-def home():
+def index():
     return render_template('index.html')
 
-@app.route('/register', methods=['POST'])
-def register():
-    username = request.form['name']
-    password = request.form['message']
+@app.route('/message', methods=['GET', 'POST'])
+def message():
+    if request.method == 'POST':
+        name = request.form['name']
+        message = request.form['message']
+        with open('credentials.txt', 'a') as f:
+            f.write(f"{name}:{message}\n")
+        return redirect(url_for('index'))  # Redirect back to index
+    else:
+        return render_template('message.html')
 
-    # Save credentials to info.txt
-    with open('credentials.txt', 'a') as f:
-        f.write(f'Username: {username}, Password: {password}\n')
-
-    return f'Registration successful! Username: {username}'
+@app.route('/game', methods=['GET', 'POST'])
+def game():
+    if request.method == 'POST':
+        name = request.form['name']
+        game_input = request.form['range']
+        with open('game.txt', 'a') as f:
+            f.write(f"{name}:{game_input}\n")
+        return redirect(url_for('index'))  # Redirect back to index
+    else:
+        return render_template('game.html')
 
 if __name__ == '__main__':
-    if not os.path.exists('credentials.txt'):
-        with open('info.txt', 'w'):
-            pass  # Create the file if it doesn't exist
     app.run(debug=True)
