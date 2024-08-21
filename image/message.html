@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Steve web</title>
+        <link rel="stylesheet" href="message.css" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=0.5,maximum-scale=1,user-scalable=no"/>
+        <script>
+            function showPopup() {
+                alert("شكرا علصراحة!");
+            }
+    
+            window.onload = function() {
+                const urlParams = new URLSearchParams(window.location.search);
+                if (urlParams.has('submitted')) {
+                    showPopup();
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <div class="top">
+            <div class="tip">
+                <h3 style="margin-left: 10px;">tip:</h3>
+                <p style="text-align: center; position: absolute; right: 10px; bottom: 3px ; color: black;">لتلرجع للقائمة الرئيسية ضغاط على Steve</p>
+            </div>
+            <a href="index.html"><img src="image/steve.png" alt="" style="width: 250px;"></a>
+        </div>
+        <form action="submit.php" method="post">
+        <div class="container">
+            <div class="entryarea">
+                <h1 class="esmak" style="text-align: right; color: white;">اسمك (اختياري)</h1>
+                <input type="text" class="text" name="name" id="name" placeholder="اسمك">
+            </div>
+            <div class="dec">
+                <h1 class="mess" id="mess" style="text-align: right; color: white; margin-top: 130px;">الرسالة</h1>
+                <textarea type="text" name="message" id="message" class="des" placeholder=" خود راحتك بس لا تتمادى" required></textarea>
+            </div>    
+            <button type="submit" class="button">توكل على الله</button>
+        </div>
+        </form>
+        
+    </body>
+</html>
