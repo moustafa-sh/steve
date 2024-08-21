@@ -23,7 +23,7 @@ def game():
     if request.method == 'POST':
         name = request.form['name']
         game_input = request.form['range']
-        with open('game.txt', 'a') as f:
+        with open('like.txt', 'a') as f:
             f.write(f"{name}:{game_input}\n")
         return redirect(url_for('index'))  # Redirect back to index
     else:
