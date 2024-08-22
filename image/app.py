@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('image/index.html')
 
 @app.route('/message', methods=['GET', 'POST'])
 def message():
@@ -16,7 +16,7 @@ def message():
             f.write(f"{name}:{message}\n")
         return redirect(url_for('index'))  # Redirect back to index
     else:
-        return render_template('message.html')
+        return render_template('image/message.html')
 
 @app.route('/game', methods=['GET', 'POST'])
 def game():
@@ -27,7 +27,7 @@ def game():
             f.write(f"{name}:{game_input}\n")
         return redirect(url_for('index'))  # Redirect back to index
     else:
-        return render_template('game.html')
+        return render_template('image/game.html')
 
 if __name__ == '__main__':
     app.run()
